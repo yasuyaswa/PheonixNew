@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="A beautiful utility dashboard with everyday productivity tools."/>
+  <title>Utility Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Animated background blobs -->
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-badge">⚡ 6 Tools Available</div>
+      <h1 class="title">Utility <span class="gradient-text">Dashboard</span></h1>
+      <p class="subtitle">Your everyday productivity toolkit — crafted and hosted for free.</p>
+
+      <!-- Search -->
+      <div class="search-wrapper">
+        <span class="search-icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </span>
+        <input
+          type="search"
+          class="search-input"
+          id="searchInput"
+          placeholder="Search tools…"
+          autocomplete="off"
+          aria-label="Search tools"
+        />
+        <span class="search-count" id="searchCount" aria-live="polite"></span>
+      </div>
+    </header>
+
+    <!-- Tool Grid -->
+    <main>
+      <div class="grid" id="toolGrid">
+
+        <a href="https://yasuyaswa.github.io/Calculator/"
+           class="card"
+           style="--accent: #7c6af7; --accent-rgb: 124, 106, 247;"
+           data-keywords="calculator percentage math arithmetic">
+          <div class="card-shine"></div>
+          <div class="card-inner">
+            <div class="icon-wrap">
+              <span class="icon" aria-hidden="true">🧮</span>
+            </div>
+            <div class="card-content">
+              <h2>% Calculator</h2>
+              <p>Percentage & arithmetic</p>
+              <span class="tag">Math</span>
+            </div>
+            <span class="arrow" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <a href="https://yasuyaswa.github.io/IntrestCalculator/"
+           class="card"
+           style="--accent: #10b981; --accent-rgb: 16, 185, 129;"
+           data-keywords="interest calculator simple compound finance money">
+          <div class="card-shine"></div>
+          <div class="card-inner">
+            <div class="icon-wrap">
+              <span class="icon" aria-hidden="true">📈</span>
+            </div>
+            <div class="card-content">
+              <h2>Interest Calculator</h2>
+              <p>Simple &amp; compound interest</p>
+              <span class="tag">Finance</span>
+            </div>
+            <span class="arrow" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <a href="https://yasuyaswa.github.io/PassProtect"
+           class="card"
+           style="--accent: #f43f5e; --accent-rgb: 244, 63, 94;"
+           data-keywords="secure text encrypt decrypt password protect security">
+          <div class="card-shine"></div>
+          <div class="card-inner">
+            <div class="icon-wrap">
+              <span class="icon" aria-hidden="true">🔐</span>
+            </div>
+            <div class="card-content">
+              <h2>Secure Text</h2>
+              <p>Encrypt &amp; decrypt text safely</p>
+              <span class="tag">Security</span>
+            </div>
+            <span class="arrow" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <a href="https://yasuyaswa.github.io/AgeCalculator"
+           class="card"
+           style="--accent: #f59e0b; --accent-rgb: 245, 158, 11;"
+           data-keywords="age calculator date birthday difference time">
+          <div class="card-shine"></div>
+          <div class="card-inner">
+            <div class="icon-wrap">
+              <span class="icon" aria-hidden="true">🎂</span>
+            </div>
+            <div class="card-content">
+              <h2>Age Calculator</h2>
+              <p>Calculate age &amp; date differences</p>
+              <span class="tag">Date</span>
+            </div>
+            <span class="arrow" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <a href="https://yasuyaswa.github.io/SecureCode"
+           class="card"
+           style="--accent: #06b6d4; --accent-rgb: 6, 182, 212;"
+           data-keywords="secure code generate password key security">
+          <div class="card-shine"></div>
+          <div class="card-inner">
+            <div class="icon-wrap">
+              <span class="icon" aria-hidden="true">🔑</span>
+            </div>
+            <div class="card-content">
+              <h2>Secure Code</h2>
+              <p>Generate secure codes &amp; keys</p>
+              <span class="tag">Security</span>
+            </div>
+            <span class="arrow" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <a href="https://calendar-attendance-6bae7.web.app/"
+           class="card"
+           style="--accent: #3b82f6; --accent-rgb: 59, 130, 246;"
+           data-keywords="attendance calendar track schedule productivity">
+          <div class="card-shine"></div>
+          <div class="card-inner">
+            <div class="icon-wrap">
+              <span class="icon" aria-hidden="true">📅</span>
+            </div>
+            <div class="card-content">
+              <h2>Attendance</h2>
+              <p>Track your attendance</p>
+              <span class="tag">Productivity</span>
+            </div>
+            <span class="arrow" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- No results -->
+      <div class="no-results" id="noResults" hidden>
+        <div class="no-results-icon">🔎</div>
+        <p>No tools found for <strong id="noResultsTerm"></strong></p>
+        <small>Try a different keyword</small>
+      </div>
+    </main>
+
+    <footer>
+      <span>Built with <span class="heart">❤️</span> · Hosted on</span>
+      <a href="https://pages.github.com/" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub Pages</a>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      const input      = document.getElementById('searchInput');
+      const cards      = document.querySelectorAll('.card');
+      const noResults  = document.getElementById('noResults');
+      const noResTerm  = document.getElementById('noResultsTerm');
+      const countBadge = document.getElementById('searchCount');
+
+      input.addEventListener('input', function () {
+        const q = this.value.toLowerCase().trim();
+        let visible = 0;
+
+        cards.forEach(function (card) {
+          const haystack = (card.dataset.keywords + ' ' + card.textContent).toLowerCase();
+          const show = !q || haystack.includes(q);
+          card.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+
+        if (q) {
+          countBadge.textContent = visible + ' result' + (visible !== 1 ? 's' : '');
+          countBadge.style.display = 'inline';
+        } else {
+          countBadge.style.display = 'none';
+        }
+
+        noResults.hidden = visible > 0;
+        noResTerm.textContent = '"' + q + '"';
+      });
+    })();
+  </script>
+
+</body>
+</html>

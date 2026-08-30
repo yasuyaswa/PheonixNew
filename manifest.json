@@ -1,0 +1,12 @@
+{
+  "name": "Phoenix Dashboard",
+  "short_name": "Phoenix",
+  "description": "All your productivity tools in one place — fast, free, and private.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f0f4ff",
+  "theme_color": "#6c47ff",
+  "icons": [
+    { "src": "favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any maskable" }
+  ]
+}

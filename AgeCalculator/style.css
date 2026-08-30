@@ -1,0 +1,382 @@
+/* ── AgeCalculator – Light Theme ─────────────────────────── */
+
+.bg-orbs { display: none; }
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 0%, rgba(255,255,255,0.24), transparent 42%),
+    radial-gradient(circle at 90% 8%, rgba(255,255,255,0.16), transparent 40%),
+    linear-gradient(165deg, #fbb040 0%, #f97316 50%, #c2410c 100%);
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px 56px;
+  overflow-x: hidden;
+}
+
+/* ── Wrapper & Card ────────────────────────────────────────── */
+.wrapper {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.card {
+  width: 100%;
+  background: #fff;
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 24px;
+  padding: 32px 28px 36px;
+  box-shadow: 0 30px 60px -14px rgba(90,35,5,0.4), 0 10px 26px -8px rgba(90,35,5,0.24);
+  animation: slideUp 0.45s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+/* ── Card Header ───────────────────────────────────────────── */
+.card-header { text-align: center; margin-bottom: 28px; }
+
+.header-icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 12px;
+  animation: iconBounce 3.5s ease-in-out infinite;
+  line-height: 1;
+}
+
+@keyframes iconBounce {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  30%     { transform: translateY(-5px) rotate(-5deg); }
+  60%     { transform: translateY(-2px) rotate(3deg); }
+}
+
+h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #1e1b4b;
+  margin-bottom: 6px;
+}
+
+.subtitle { font-size: 0.875rem; color: #64748b; }
+
+/* ── Form ──────────────────────────────────────────────────── */
+.form-section { display: flex; flex-direction: column; gap: 12px; }
+
+.input-group { position: relative; display: flex; align-items: center; }
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  font-size: 16px;
+  z-index: 1;
+  pointer-events: none;
+  line-height: 1;
+}
+
+input[type="text"],
+input[type="datetime-local"] {
+  width: 100%;
+  padding: 14px 16px 14px 44px;
+  font-size: 0.95rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #f8faff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  color: #1e1b4b;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  -webkit-appearance: none;
+}
+
+input:focus {
+  border-color: #6c47ff;
+  box-shadow: 0 0 0 3px rgba(108,71,255,0.1);
+  background: #fff;
+}
+
+input::placeholder { color: #94a3b8; }
+
+/* ── Primary Button ────────────────────────────────────────── */
+.primary-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 15px;
+  background: #6c47ff;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.975rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  margin-top: 4px;
+  box-shadow: 0 4px 14px rgba(108,71,255,0.3);
+}
+
+.primary-btn:hover {
+  background: #5b3de8;
+  box-shadow: 0 6px 18px rgba(108,71,255,0.35);
+  transform: translateY(-1px);
+}
+
+.primary-btn:active { transform: translateY(0); }
+.primary-btn svg { flex-shrink: 0; }
+
+/* ── Divider ───────────────────────────────────────────────── */
+.divider { height: 1px; background: #e2e8f0; margin: 20px 0 18px; }
+
+/* ── Name Display ──────────────────────────────────────────── */
+.name-display {
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #6c47ff;
+  margin-bottom: 14px;
+}
+
+/* ── Birthday Highlight Card ───────────────────────────── */
+.bday-highlight {
+  background: linear-gradient(135deg, #f97316 0%, #fbbf24 100%);
+  border-radius: 18px;
+  padding: 22px 24px 18px;
+  text-align: center;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 24px rgba(249,115,22,0.26);
+  animation: slideUp 0.4s cubic-bezier(0.16,1,0.3,1) both;
+}
+.bday-highlight.is-today {
+  background: linear-gradient(135deg, #ec4899 0%, #f97316 100%);
+  box-shadow: 0 8px 24px rgba(236,72,153,0.3);
+}
+.bday-highlight-days {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.bday-highlight-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 5px;
+}
+.bday-highlight-date {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.68);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* ── Fun Row ───────────────────────────────────────────────── */
+.fun-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+  justify-content: center;
+}
+
+.fun-chip {
+  background: rgba(108,71,255,0.08);
+  color: #6c47ff;
+  border: 1px solid rgba(108,71,255,0.2);
+  padding: 5px 14px;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* ── Tiles ─────────────────────────────────────────────────── */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.tile {
+  background: #f8faff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 14px 8px;
+  text-align: center;
+}
+
+.tile-years {
+  grid-column: span 3;
+  background: linear-gradient(135deg, #6c47ff 0%, #a78bfa 100%);
+  border-color: transparent;
+}
+
+.tile-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #1e1b4b;
+  line-height: 1;
+}
+
+.tile-years .tile-value { color: #fff; font-size: 2.4rem; }
+
+.tile-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+.tile-years .tile-label { color: rgba(255,255,255,0.72); }
+
+@keyframes tick {
+  0%,100% { transform: scale(1); }
+  50%     { transform: scale(1.2); color: #6c47ff; }
+}
+
+.tile-seconds .tile-value.tick { animation: tick 0.22s ease; }
+
+/* ── Total Days Banner ─────────────────────────────────────── */
+.total-days {
+  background: rgba(108,71,255,0.06);
+  border: 1px solid rgba(108,71,255,0.15);
+  border-radius: 12px;
+  padding: 14px 18px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #4a3d99;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.total-days strong { font-weight: 700; color: #6c47ff; }
+
+/* ── Birthday Card ─────────────────────────────────────────── */
+.birthday-card {
+  background: rgba(16,185,129,0.06);
+  border: 1px solid rgba(16,185,129,0.2);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.birthday-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.birthday-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #059669;
+}
+
+.birthday-time {
+  font-size: 0.975rem;
+  font-weight: 600;
+  color: #1e1b4b;
+  margin-bottom: 12px;
+}
+
+.progress-track {
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #34d399);
+  border-radius: 99px;
+  transition: width 0.6s ease;
+}
+
+.progress-label {
+  font-size: 0.75rem;
+  color: #64748b;
+  text-align: right;
+}
+
+/* ── Export Button ─────────────────────────────────────────── */
+.export-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  background: #fff;
+  color: #6c47ff;
+  border: 1.5px solid rgba(108,71,255,0.28);
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.export-btn:hover {
+  background: rgba(108,71,255,0.06);
+  border-color: #6c47ff;
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+.site-footer { text-align: center; font-size: 0.82rem; color: rgba(255,255,255,0.9); font-weight: 500; padding: 10px; }
+.heart {
+  display: inline-block;
+  color: #ff2d55;
+  animation: glowPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { text-shadow: 0 0 4px rgba(255,45,85,0.8), 0 0 10px rgba(255,45,85,0.5), 0 0 20px rgba(255,45,85,0.3); }
+  50%       { text-shadow: 0 0 8px #ff2d55, 0 0 22px rgba(255,45,85,0.9), 0 0 45px rgba(255,45,85,0.7), 0 0 80px rgba(255,0,50,0.4); }
+}
+
+/* ── Confetti Canvas ───────────────────────────────────────── */
+#confettiCanvas { position: fixed; inset: 0; pointer-events: none; z-index: 999; }
+
+/* ── Hidden ────────────────────────────────────────────────── */
+.hidden { display: none !important; }
+
+/* ── Result section ────────────────────────────────────────── */
+.result-section.hidden { display: none; }
+
+/* ── Shake ─────────────────────────────────────────────────── */
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%     { transform: translateX(-7px); }
+  40%     { transform: translateX(7px); }
+  60%     { transform: translateX(-5px); }
+  80%     { transform: translateX(5px); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  body { padding: 0 12px 44px; }
+  .card { padding: 24px 18px 28px; border-radius: 20px; }
+  .tile-value { font-size: 1.35rem; }
+  .tile-years .tile-value { font-size: 2rem; }
+  h1 { font-size: 1.5rem; }
+}

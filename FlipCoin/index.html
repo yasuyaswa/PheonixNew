@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Phoenix Flip a Coin – instant heads or tails with a smooth 3D flip animation."/>
+  <meta name="theme-color" content="#f59e0b"/>
+  <title>Flip a Coin — Phoenix</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../styles/main.css"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="../styles/glass.css"/>
+</head>
+<body data-app="flip">
+
+<!-- Phoenix Navigation -->
+<nav class="phoenix-nav" aria-label="Site navigation">
+  <a href="../index.html" class="nav-back">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Dashboard
+  </a>
+  <a href="../index.html" class="nav-brand" aria-label="Phoenix Dashboard">
+    <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="npg6" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffc23c"/><stop offset="0.45" stop-color="#ff7a18"/><stop offset="1" stop-color="#e11d2f"/></linearGradient></defs><g fill="url(#npg6)"><path d="M256 232 C 300 196 332 182 356 150 C 372 128 384 104 392 78 C 396 112 392 140 378 166 C 404 150 424 124 436 96 C 436 134 420 166 392 190 C 420 184 446 168 466 144 C 456 188 424 220 380 236 C 340 250 296 250 256 244 Z"/><path d="M256 232 C 212 196 180 182 156 150 C 140 128 128 104 120 78 C 116 112 120 140 134 166 C 108 150 88 124 76 96 C 76 134 92 166 120 190 C 92 184 66 168 46 144 C 56 188 88 220 132 236 C 172 250 216 250 256 244 Z"/><path d="M256 150 C 240 156 231 170 236 186 C 224 180 210 186 210 200 C 222 194 232 198 238 208 C 226 214 224 230 234 240 C 240 226 250 222 256 232 C 262 222 272 226 278 240 C 288 230 286 214 274 208 C 280 198 290 194 302 200 C 302 186 288 180 276 186 C 281 170 272 156 256 150 Z"/><path d="M256 242 C 238 276 236 312 252 346 C 236 342 224 320 222 296 C 210 328 218 372 246 404 C 240 372 246 350 258 336 C 262 358 258 388 240 420 C 276 402 292 360 282 320 C 300 346 300 392 280 430 C 318 408 334 356 320 310 C 336 330 338 372 322 408 C 356 378 360 320 338 278 C 320 258 288 244 256 242 Z"/></g></svg>
+    <span>Phoenix</span>
+  </a>
+</nav>
+
+<div class="bg-orbs" aria-hidden="true">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<div class="app">
+
+  <div class="header">
+    <h1>🪙 Flip a Coin</h1>
+    <p>Heads or tails — let fate decide</p>
+  </div>
+
+  <!-- 3D Coin -->
+  <div class="coin-stage">
+    <div class="coin" id="coin">
+      <div class="coin-face face-heads" aria-hidden="true">
+        <span class="coin-emoji">👑</span>
+        <span class="coin-text">Heads</span>
+      </div>
+      <div class="coin-face face-tails" aria-hidden="true">
+        <span class="coin-emoji">⭐</span>
+        <span class="coin-text">Tails</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Result -->
+  <div class="result-display" aria-live="polite">
+    <div class="result-label">Result</div>
+    <div class="result-value" id="resultValue">—</div>
+  </div>
+
+  <!-- Flip Button -->
+  <button class="flip-btn" id="flipBtn" onclick="flipCoin()" aria-label="Flip the coin">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+    Flip Coin
+  </button>
+
+  <!-- Stats -->
+  <div class="stats" role="region" aria-label="Flip statistics">
+    <div class="stat-card">
+      <div class="stat-val" id="headsCount">0</div>
+      <div class="stat-label">👑 Heads</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val" id="tailsCount">0</div>
+      <div class="stat-label">⭐ Tails</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val" id="totalCount">0</div>
+      <div class="stat-label">Total</div>
+    </div>
+  </div>
+
+  <!-- Streak / percentage bar -->
+  <div class="streak-bar" id="streakBar">Flip the coin to start!</div>
+
+  <!-- History dots (last 20 flips) -->
+  <div class="history" id="historyDots" aria-label="Last 20 flips"></div>
+
+  <footer class="footer">
+    Built with <span class="heart">&#10084;</span> for GitHub Pages
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

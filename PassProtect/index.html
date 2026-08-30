@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PassProtect — Phoenix</title>
+  <meta name="description" content="Encrypt and decrypt text in your browser using AES-256-GCM. Nothing leaves your device."/>
+  <meta name="theme-color" content="#6c47ff"/>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../styles/main.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- Phoenix Navigation -->
+  <nav class="phoenix-nav" aria-label="Site navigation">
+    <a href="../index.html" class="nav-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Dashboard
+    </a>
+    <a href="../index.html" class="nav-brand" aria-label="Phoenix Dashboard">
+      <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="npg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffc23c"/><stop offset="0.45" stop-color="#ff7a18"/><stop offset="1" stop-color="#e11d2f"/></linearGradient></defs><g fill="url(#npg3)"><path d="M256 232 C 300 196 332 182 356 150 C 372 128 384 104 392 78 C 396 112 392 140 378 166 C 404 150 424 124 436 96 C 436 134 420 166 392 190 C 420 184 446 168 466 144 C 456 188 424 220 380 236 C 340 250 296 250 256 244 Z"/><path d="M256 232 C 212 196 180 182 156 150 C 140 128 128 104 120 78 C 116 112 120 140 134 166 C 108 150 88 124 76 96 C 76 134 92 166 120 190 C 92 184 66 168 46 144 C 56 188 88 220 132 236 C 172 250 216 250 256 244 Z"/><path d="M256 150 C 240 156 231 170 236 186 C 224 180 210 186 210 200 C 222 194 232 198 238 208 C 226 214 224 230 234 240 C 240 226 250 222 256 232 C 262 222 272 226 278 240 C 288 230 286 214 274 208 C 280 198 290 194 302 200 C 302 186 288 180 276 186 C 281 170 272 156 256 150 Z"/><path d="M256 242 C 238 276 236 312 252 346 C 236 342 224 320 222 296 C 210 328 218 372 246 404 C 240 372 246 350 258 336 C 262 358 258 388 240 420 C 276 402 292 360 282 320 C 300 346 300 392 280 430 C 318 408 334 356 320 310 C 336 330 338 372 322 408 C 356 378 360 320 338 278 C 320 258 288 244 256 242 Z"/></g></svg>
+      <span>Phoenix</span>
+    </a>
+  </nav>
+
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="card" role="main">
+
+    <div class="card-header">
+      <div class="logo">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="40" height="40" rx="12" fill="url(#logoGrad)"/>
+          <path d="M20 9c-3.866 0-7 3.134-7 7v2h-1a2 2 0 00-2 2v9a2 2 0 002 2h16a2 2 0 002-2v-9a2 2 0 00-2-2h-1v-2c0-3.866-3.134-7-7-7zm0 2.5a4.5 4.5 0 014.5 4.5v2h-9v-2A4.5 4.5 0 0120 11.5zm0 10a2 2 0 110 4 2 2 0 010-4z" fill="white"/>
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#6366f1"/>
+              <stop offset="1" stop-color="#8b5cf6"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="header-text">
+        <h1>PassProtect</h1>
+        <p class="subtitle">Encrypt anything. Nothing leaves this device.</p>
+      </div>
+    </div>
+
+    <div class="badges" aria-label="Security details">
+      <span class="badge">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+        AES-256-GCM
+      </span>
+      <span class="badge">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.5 2.5a1 1 0 001.414-1.414L11 9.586V6z" clip-rule="evenodd"/></svg>
+        PBKDF2 &middot; 100k
+      </span>
+      <span class="badge ok">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        100% Offline
+      </span>
+    </div>
+
+    <div class="mode-toggle" role="group" aria-label="Encryption mode">
+      <span class="mode-indicator" aria-hidden="true"></span>
+      <button id="btn-encrypt" class="mode-btn active" onclick="setMode('encrypt')" aria-pressed="true" type="button">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+        </svg>
+        Encrypt
+      </button>
+      <button id="btn-decrypt" class="mode-btn" onclick="setMode('decrypt')" aria-pressed="false" type="button">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z"/>
+        </svg>
+        Decrypt
+      </button>
+    </div>
+
+    <div class="field">
+      <label for="text">
+        <span class="lbl">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 4a1 1 0 011-1h3a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/></svg>
+          Input Text
+        </span>
+        <span id="charCount" class="char-count">0 chars</span>
+      </label>
+      <textarea id="text" placeholder="Paste or type your text here&#x2026;" oninput="updateCharCount()" autocomplete="off" spellcheck="false"></textarea>
+    </div>
+
+    <div class="field">
+      <label for="password">
+        <span class="lbl">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clip-rule="evenodd"/></svg>
+          Password
+        </span>
+        <span class="field-hint">3&ndash;20 chars</span>
+      </label>
+      <div class="password-wrap">
+        <input type="password" id="password" placeholder="Enter a strong password&#x2026;" oninput="updateStrength()" autocomplete="new-password"/>
+        <button class="eye-btn" id="eyeBtn" onclick="togglePassword()" aria-label="Toggle password visibility" type="button">
+          <svg id="eyeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+      </div>
+      <div class="strength-bar" aria-hidden="true">
+        <div class="strength-fill" id="strengthFill"></div>
+      </div>
+      <div class="strength-label-row">
+        <small id="pwdError" role="alert"></small>
+        <span id="strengthLabel" class="strength-label"></span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="processBtn" class="btn-primary" onclick="process()" type="button">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
+        </svg>
+        <span id="processLabel">Encrypt</span>
+        <span class="btn-spinner" aria-hidden="true"></span>
+      </button>
+      <button class="btn-secondary" onclick="resetAll()" type="button" aria-label="Reset all fields">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+        </svg>
+        Reset
+      </button>
+    </div>
+
+    <div class="result" id="result" hidden>
+      <div class="result-header">
+        <svg id="statusSvg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"></svg>
+        <span id="statusText"></span>
+      </div>
+      <div class="output" id="output" tabindex="0" aria-label="Output text" aria-live="polite"></div>
+      <div class="result-actions">
+        <button class="btn-action copy-btn" id="copyBtn" onclick="copy()" disabled type="button">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"/>
+            <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"/>
+          </svg>
+          Copy
+        </button>
+        <button class="btn-action download-btn" id="downloadBtn" onclick="downloadTxt()" disabled type="button">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+          Download
+        </button>
+      </div>
+    </div>
+
+    <p class="footer-note">
+      <span>Press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> to run</span>
+      <span aria-hidden="true">&middot;</span>
+      <span>Built with <span class="heart">&#10084;&#65039;</span> using GitHub Pages</span>
+    </p>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,542 @@
+/* ─────────────────────────────────────────────────────────────
+   Phoenix — Glass Layer
+   Loaded AFTER each tool's own style.css. Re-skins the shared
+   chrome (backdrop, panes, inputs, buttons, text) as frosted
+   glass without touching any layout.
+
+   Opt in per page:
+     <body data-app="age">   … and link this file last.
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --g-fill:     rgba(255,255,255,0.10);
+  --g-fill-2:   rgba(255,255,255,0.06);
+  --g-fill-3:   rgba(255,255,255,0.17);
+  --g-stroke:   rgba(255,255,255,0.20);
+  --g-stroke-2: rgba(255,255,255,0.36);
+  --g-text:     #ffffff;
+  --g-text-2:   rgba(255,255,255,0.78);
+  --g-text-3:   rgba(255,255,255,0.55);
+  --g-spring:   cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Per-app colour identity ─────────────────────────────────── */
+body[data-app="age"] {
+  --acc-1: #f59e0b; --acc-2: #e11d48; --acc-3: #7c3aed;
+  --base-1: #1f0d06; --base-2: #2a1209; --base-3: #100718;
+  --accent: #fbbf24; --accent-2: #f97316;
+}
+
+body[data-app="flip"] {
+  --acc-1: #7c3aed; --acc-2: #c026d3; --acc-3: #0ea5e9;
+  --base-1: #1b0c40; --base-2: #240f52; --base-3: #0f0726;
+  --accent: #c4b5fd; --accent-2: #7c3aed;
+}
+
+body[data-app="interest"] {
+  --acc-1: #10b981; --acc-2: #0891b2; --acc-3: #7c3aed;
+  --base-1: #04211f; --base-2: #062c29; --base-3: #070c1d;
+  --accent: #34d399; --accent-2: #059669;
+}
+
+body[data-app="mind"] {
+  --acc-1: #c026d3; --acc-2: #e11d48; --acc-3: #4f46e5;
+  --base-1: #260536; --base-2: #300842; --base-3: #100626;
+  --accent: #e879f9; --accent-2: #a21caf;
+}
+
+body[data-app="percent"] {
+  --acc-1: #7c3aed; --acc-2: #db2777; --acc-3: #0284c7;
+  --base-1: #1a0b3b; --base-2: #220e4c; --base-3: #0f0726;
+  --accent: #a78bfa; --accent-2: #6c47ff;
+}
+
+body[data-app="secure"] {
+  --acc-1: #8b5cf6; --acc-2: #4f46e5; --acc-3: #0891b2;
+  --base-1: #170c34; --base-2: #1e1044; --base-3: #0d0722;
+  --accent: #a78bfa; --accent-2: #7c3aed;
+}
+
+/* ── Colour field backdrop ───────────────────────────────────── */
+body[data-app] {
+  position: relative;
+  color-scheme: dark;
+  color: var(--g-text);
+  background:
+    radial-gradient(880px 620px at 4% -16%,  var(--acc-1) 0%, transparent 46%),
+    radial-gradient(760px 580px at 104% 0%,  var(--acc-2) 0%, transparent 44%),
+    radial-gradient(820px 660px at 46% 116%, var(--acc-3) 0%, transparent 46%),
+    linear-gradient(160deg, var(--base-1) 0%, var(--base-2) 44%, var(--base-3) 100%);
+  background-attachment: fixed;
+}
+
+/* refraction grid */
+body[data-app]::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(circle at 50% 26%, #000 0%, transparent 80%);
+  mask-image: radial-gradient(circle at 50% 26%, #000 0%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Drifting orbs ───────────────────────────────────────────── */
+body[data-app] .bg-orbs,
+body[data-app] .orbs {
+  display: block !important;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body[data-app] .orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(64px);
+  will-change: transform;
+  animation: gDrift 26s ease-in-out infinite;
+}
+
+body[data-app] .orb-1 {
+  width: 420px; height: 420px; opacity: 0.34;
+  top: -160px; left: -140px;
+  background: radial-gradient(circle, var(--acc-1) 0%, transparent 70%);
+}
+
+body[data-app] .orb-2 {
+  width: 360px; height: 360px; opacity: 0.3;
+  bottom: -140px; right: -120px;
+  background: radial-gradient(circle, var(--acc-2) 0%, transparent 70%);
+  animation-delay: -9s;
+}
+
+body[data-app] .orb-3 {
+  width: 320px; height: 320px; opacity: 0.24;
+  top: 44%; right: -170px;
+  background: radial-gradient(circle, var(--acc-3) 0%, transparent 70%);
+  animation-delay: -17s;
+}
+
+body[data-app] .orb-4 {
+  width: 280px; height: 280px; opacity: 0.2;
+  bottom: 16%; left: -150px;
+  background: radial-gradient(circle, var(--acc-1) 0%, transparent 70%);
+  animation-delay: -13s;
+}
+
+@keyframes gDrift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33%      { transform: translate3d(40px, 52px, 0) scale(1.1); }
+  66%      { transform: translate3d(-32px, 28px, 0) scale(0.92); }
+}
+
+/* keep content above the backdrop */
+body[data-app] > .wrapper,
+body[data-app] > .app,
+body[data-app] > .main,
+body[data-app] > .container,
+body[data-app] > .viewer,
+body[data-app] > footer,
+body[data-app] > .site-footer,
+body[data-app] > .footer { position: relative; z-index: 1; }
+
+/* ── Primary glass panes ─────────────────────────────────────── */
+body[data-app="age"]      .card,
+body[data-app="interest"] .card,
+body[data-app="interest"] .result,
+body[data-app="mind"]     .card,
+body[data-app="secure"]   .card,
+body[data-app="percent"]  .app {
+  position: relative;
+  background: linear-gradient(150deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.07) 52%, rgba(255,255,255,0.11) 100%);
+  backdrop-filter: blur(34px) saturate(180%) brightness(1.05);
+  -webkit-backdrop-filter: blur(34px) saturate(180%) brightness(1.05);
+  border: none;
+  box-shadow:
+    0 40px 90px -24px rgba(0,0,0,0.6),
+    0 12px 34px -16px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.35),
+    inset 0 -1px 0 rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+
+/* refracting rim light */
+body[data-app="age"]      .card::before,
+body[data-app="interest"] .card::before,
+body[data-app="interest"] .result::before,
+body[data-app="mind"]     .card::before,
+body[data-app="secure"]   .card::before,
+body[data-app="percent"]  .app::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.2px;
+  background: linear-gradient(140deg,
+    rgba(255,255,255,0.85) 0%,
+    rgba(255,255,255,0.16) 32%,
+    rgba(255,255,255,0.06) 58%,
+    rgba(255,255,255,0.55) 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ── Secondary frosted surfaces ──────────────────────────────── */
+body[data-app="age"]      .tile,
+body[data-app="age"]      .fun-chip,
+body[data-app="age"]      .total-days,
+body[data-app="age"]      .birthday-card,
+body[data-app="flip"]     .result-display,
+body[data-app="flip"]     .stat-card,
+body[data-app="flip"]     .streak-bar,
+body[data-app="interest"] .chip,
+body[data-app="mind"]     .tag,
+body[data-app="mind"]     .step-badge,
+body[data-app="mind"]     .secret-box,
+body[data-app="percent"]  .sub-card,
+body[data-app="percent"]  .history-box,
+body[data-app="secure"]   .result-card,
+body[data-app="secure"]   .status-pill,
+body[data-app="secure"]   .tag,
+body[data-app="secure"]   .field-badge,
+body[data-app="secure"]   kbd {
+  background: var(--g-fill);
+  border: 1px solid var(--g-stroke);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.22);
+  color: var(--g-text);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+body[data-app="age"]      .tile:hover,
+body[data-app="flip"]     .stat-card:hover,
+body[data-app="interest"] .chip:hover,
+body[data-app="percent"]  .sub-card:hover {
+  background: var(--g-fill-3);
+  border-color: var(--g-stroke-2);
+}
+
+/* accent-tinted highlight surfaces keep their identity, gain glass */
+body[data-app="age"]     .tile-years,
+body[data-app="age"]     .bday-highlight,
+body[data-app="percent"] .main-card,
+body[data-app="interest"] .result-total-box {
+  border: 1px solid rgba(255,255,255,0.34);
+  box-shadow:
+    0 18px 40px -16px rgba(0,0,0,0.65),
+    inset 0 1px 0 rgba(255,255,255,0.45);
+}
+
+/* ── Dividers, tracks, rules ─────────────────────────────────── */
+body[data-app] .divider,
+body[data-app] .rule,
+body[data-app] hr {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.14);
+}
+
+body[data-app] .progress-track,
+body[data-app="interest"] .toggle-pill,
+body[data-app="percent"]  .mode-tabs {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.22);
+}
+
+body[data-app="interest"] .pill-track,
+body[data-app="percent"]  .mode-tab.active {
+  background: linear-gradient(160deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.14) 100%);
+  border: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 6px 18px -6px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.55);
+  color: #fff;
+}
+
+/* ── Inputs ──────────────────────────────────────────────────── */
+body[data-app] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+body[data-app] textarea,
+body[data-app] select {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: #fff;
+  color-scheme: dark;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -6px 14px -10px rgba(0,0,0,0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+body[data-app] input:hover,
+body[data-app] textarea:hover {
+  border-color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.1);
+}
+
+body[data-app] input:focus,
+body[data-app] textarea:focus,
+body[data-app] select:focus {
+  outline: none;
+  border-color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.13);
+  box-shadow: 0 0 0 4px rgba(255,255,255,0.16), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+body[data-app] input::placeholder,
+body[data-app] textarea::placeholder { color: rgba(255,255,255,0.42); }
+
+body[data-app] input:-webkit-autofill,
+body[data-app] input:-webkit-autofill:hover,
+body[data-app] input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff;
+  caret-color: #fff;
+  transition: background-color 9999s ease-out;
+}
+
+body[data-app] input[type="date"],
+body[data-app] input[type="datetime-local"] { color-scheme: dark; }
+
+/* ── Primary buttons ─────────────────────────────────────────── */
+body[data-app] .primary-btn,
+body[data-app] .calc-btn,
+body[data-app] .btn-generate,
+body[data-app] .flip-btn {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(140deg,
+    color-mix(in srgb, var(--accent) 85%, #fff) 0%,
+    var(--accent-2) 55%,
+    color-mix(in srgb, var(--accent-2) 70%, #000) 100%);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.32);
+  box-shadow:
+    0 14px 32px -12px rgba(0,0,0,0.8),
+    inset 0 1px 0 rgba(255,255,255,0.45);
+  transition: transform 0.22s var(--g-spring), box-shadow 0.28s, filter 0.25s;
+}
+
+/* shimmer sweep */
+body[data-app] .primary-btn::after,
+body[data-app] .calc-btn::after,
+body[data-app] .btn-generate::after,
+body[data-app] .flip-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 32%, rgba(255,255,255,0.34) 50%, transparent 68%);
+  transform: translateX(-130%);
+  transition: transform 0.75s ease;
+  pointer-events: none;
+}
+
+body[data-app] .primary-btn:hover,
+body[data-app] .calc-btn:hover,
+body[data-app] .btn-generate:hover,
+body[data-app] .flip-btn:hover {
+  background: linear-gradient(140deg,
+    color-mix(in srgb, var(--accent) 85%, #fff) 0%,
+    var(--accent-2) 55%,
+    color-mix(in srgb, var(--accent-2) 70%, #000) 100%);
+  transform: translateY(-2px);
+  filter: saturate(1.1) brightness(1.07);
+  box-shadow: 0 22px 44px -14px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+body[data-app] .primary-btn:hover::after,
+body[data-app] .calc-btn:hover::after,
+body[data-app] .btn-generate:hover::after,
+body[data-app] .flip-btn:hover::after { transform: translateX(130%); }
+
+body[data-app] .primary-btn > *,
+body[data-app] .calc-btn > *,
+body[data-app] .btn-generate > *,
+body[data-app] .flip-btn > * { position: relative; z-index: 1; }
+
+/* ── Secondary / ghost buttons ───────────────────────────────── */
+body[data-app] .export-btn,
+body[data-app] .copy-btn,
+body[data-app] .history-btn,
+body[data-app] .btn-back,
+body[data-app] .btn-reset,
+body[data-app] .btn-copy,
+body[data-app] .ctrl-btn {
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--g-text-2);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.22);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background 0.22s, border-color 0.22s, color 0.22s, transform 0.22s var(--g-spring);
+}
+
+body[data-app] .export-btn:hover,
+body[data-app] .copy-btn:hover,
+body[data-app] .history-btn:hover,
+body[data-app] .btn-back:hover,
+body[data-app] .btn-reset:hover,
+body[data-app] .btn-copy:hover,
+body[data-app] .ctrl-btn:hover {
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.42);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ── Typography on glass ─────────────────────────────────────── */
+body[data-app] h1,
+body[data-app] h2,
+body[data-app] h3,
+body[data-app] .logo-title,
+body[data-app] .tile-value,
+body[data-app] .chip-val,
+body[data-app] .step-text,
+body[data-app] .birthday-time,
+body[data-app] .stat-val {
+  color: #fff;
+}
+
+body[data-app] .subtitle,
+body[data-app] .logo-sub,
+body[data-app] .field-label,
+body[data-app] .field-meta label,
+body[data-app] .reveal-label,
+body[data-app] .progress-label,
+body[data-app] .history-box li,
+body[data-app="percent"] label {
+  color: var(--g-text-2);
+}
+
+body[data-app] .tile-label,
+body[data-app] .chip-label,
+body[data-app] .mode-hint,
+body[data-app] .password-hint,
+body[data-app] .kbd-hint,
+body[data-app] .reveal-sub,
+body[data-app] .result-eyebrow,
+body[data-app] .field-adornment,
+body[data-app] .input-icon,
+body[data-app] .stat-label,
+body[data-app="percent"] .sub-card p {
+  color: var(--g-text-3);
+}
+
+body[data-app] .pill-btn,
+body[data-app] .mode-tab { color: var(--g-text-3); }
+body[data-app] .pill-btn.active,
+body[data-app] .mode-tab.active { color: #fff; }
+
+body[data-app] .footer,
+body[data-app] .site-footer,
+body[data-app] .footer-note { color: rgba(255,255,255,0.7); }
+
+/* ── Accent text, lightened for dark glass ───────────────────── */
+body[data-app="age"] .name-display,
+body[data-app="age"] .fun-chip,
+body[data-app="age"] .total-days,
+body[data-app="age"] .total-days strong,
+body[data-app="age"] .export-btn { color: var(--accent); }
+
+body[data-app="age"] .total-days { color: var(--g-text-2); }
+body[data-app="age"] .birthday-label { color: #6ee7b7; }
+
+/* the seconds tile flash is baked into a keyframe — restate it */
+@keyframes tick {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.2); color: #fcd34d; }
+}
+
+body[data-app="mind"] .tag,
+body[data-app="mind"] .step-badge,
+body[data-app="mind"] .reveal-number,
+body[data-app="mind"] .btn-secret,
+body[data-app="mind"] .logo-title span,
+body[data-app="mind"] .step-text strong,
+body[data-app="mind"] .password-hint strong { color: #f0abfc; }
+
+body[data-app="mind"] .secret-box { color: var(--g-text-2); }
+
+body[data-app="secure"] .tag,
+body[data-app="secure"] .field-badge,
+body[data-app="secure"] .logo-title span,
+body[data-app="secure"] .btn-copy:not(:disabled):hover { color: #c4b5fd; }
+
+body[data-app="secure"] .status-pill,
+body[data-app="interest"] .copy-btn:hover,
+body[data-app="interest"] .copy-btn.copied,
+body[data-app="percent"] .copied,
+body[data-app="percent"] .sub-card.discount h2 { color: #6ee7b7; }
+
+body[data-app="percent"] .sub-card.tax h2       { color: #fdba74; }
+body[data-app="percent"] .sub-card.tip-card h2  { color: #5eead4; }
+body[data-app="percent"] .sub-card.tip-total-card h2 { color: #c4b5fd; }
+body[data-app="percent"] .history-btn:hover,
+body[data-app="percent"] .mode-tab:not(.active):hover { color: #fff; }
+
+body[data-app="secure"] .btn-reset:hover { color: #fff; }
+body[data-app="mind"] .password-gate .input-icon { color: #f0abfc; }
+
+/* ── Scrollbars & selection ──────────────────────────────────── */
+body[data-app] ::selection { background: rgba(255,255,255,0.3); color: #fff; }
+body[data-app] * { scrollbar-color: rgba(255,255,255,0.28) transparent; }
+body[data-app] ::-webkit-scrollbar { width: 9px; height: 9px; }
+body[data-app] ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.24); border-radius: 99px; }
+body[data-app] ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.38); }
+
+/* ── Focus visibility ────────────────────────────────────────── */
+body[data-app] button:focus-visible,
+body[data-app] a:focus-visible {
+  outline: 2.5px solid rgba(255,255,255,0.85);
+  outline-offset: 2px;
+}
+
+/* ── Toast ───────────────────────────────────────────────────── */
+body[data-app] .toast {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.28);
+  box-shadow: 0 18px 40px -14px rgba(0,0,0,0.7);
+}
+
+/* ── StatusReel: stays black, controls go glass ──────────────── */
+body[data-app="reel"] {
+  background: #000;
+  color: #fff;
+}
+
+body[data-app="reel"]::before { content: none; }
+
+body[data-app="reel"] .viewer-footer {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(26px) saturate(180%);
+  -webkit-backdrop-filter: blur(26px) saturate(180%);
+  border-top: 1px solid rgba(255,255,255,0.14);
+}
+
+body[data-app="reel"] .pause-badge,
+body[data-app="reel"] .counter {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ── Reduced motion ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  body[data-app] *,
+  body[data-app] *::before,
+  body[data-app] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
